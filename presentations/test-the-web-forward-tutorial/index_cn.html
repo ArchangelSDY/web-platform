@@ -1,0 +1,1471 @@
+<!doctype HTML>  
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		
+		<title>Test the Web Forward</title>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/print.css" type="text/css" media="print">
+
+		<link rel="stylesheet" href="lib/textmate.css">
+		<link rel="stylesheet" href="css/adobe.css">
+	</head>
+	
+	<body>
+		
+		<div class="reveal">
+
+			<!-- Used to fade in a background when a specific slide state is reached -->
+			<div class="state-background"></div>
+			
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>W3C测试教程</h2>
+					<img src="assets/images/W3C_logo.jpg">
+					<script>
+						// Delicously hacky. Look away.
+						if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
+					</script>
+				</section>
+				
+				 <section data-state="screenshotPage">
+                    <h2>配置</h2>
+                    <p class="font2">完成以下步骤后再推进</p>
+                    <section>
+                        <br>
+                        <ul style="line-height:50px">
+                            <li>步骤 1: 创建CSSWG Test Manager的账号<br><a href="https://test.csswg.org/shepherd/register/" style="font-size:16px">https://test.csswg.org/shepherd/register/</a> 
+                                <ul>
+                                    <li>记得勾选"Request Repository Write Access"</li>
+                                </ul>
+                            </li>
+                            <li>步骤 2: 安装Mercurial<br><a href="http://wiki.csswg.org/tools/hg/install" style="font-size:16px">http://wiki.csswg.org/tools/hg/install</a></li>
+                            <li>步骤 3: 配置Mercurial<br><a href="http://wiki.csswg.org/tools/hg#setting-up-mercurial-preferences" style="font-size:16px">http://wiki.csswg.org/tools/hg#setting-up-mercurial-preferences</a></li>   
+                        </ul>
+                        <br><br>
+                        <p class="font5">按向下的箭头查看其他步骤</p>
+                    </section>
+                    <section>
+                        <br>
+                        <ul style="line-height:50px"> 
+                            <li>步骤 4: 复制CSSWG测试代码库<br><a href="http://wiki.csswg.org/tools/hg#initial-clone-of-the-central-repository" style="font-size:16px">http://wiki.csswg.org/tools/hg#initial-clone-of-the-central-repository</a></li>
+                            <li>步骤 5: 复制Resources目录<br><a href="http://wiki.csswg.org/tools/hg#initial-clone-of-the-central-repository" style="font-size:16px">http://wiki.csswg.org/tools/hg#initial-clone-of-the-central-repository</a></li>
+                        </ul>                        
+                    </section>
+                </section>
+				
+				<section data-state="screenshotPage">
+				    <br>
+					<h2>Reftest概览</h2>
+					<blockquote>
+					<ul>
+					    <li>两个文件: 测试文件 + 参考文件</li>
+					    <li>测试文件使用了你要测试的功能</li>
+					    <li>参考文件没有使用待测功能，但在视觉匹配上是一样的</li>
+						<li>自描述(手工和自动测试都适用)</li>
+						<li> 跨浏览器并且跨平台</li>
+					</ul>
+					</blockquote>
+				</section>
+				
+				<section data-state="screenshotPage">
+				    <br>
+    				<h2>目录结构</h2>
+    				<section>
+    				    <br>
+    				    
+    				    <ul>
+    				    <li style="list-style-type: none;">CSSWG测试代码库</li>
+    				    <ul>
+    				        <ul>
+    				        <li><tt>contributors</tt></li>
+						    <ul>
+						        <li><tt>ttwf_bj</tt></li>
+						        <ul>
+						            <li><tt><em>your_csswg_id</em></tt></li>
+						            <ul>
+						                <li><tt>incoming</tt></li>
+    						            <li><tt>submitted</tt></li>
+						            </ul>
+						        </ul>
+						    </ul>
+						</ul>
+    				    
+					</section>
+					<section>
+					    <img src="assets/images/directoryStructure.png"/>
+					</section>
+    			</section>
+    			<section data-state="screenshotPage">
+    			    <br>
+    				<h2>测试用例示例</h2>
+    				<section>
+    					<br><br>
+    					<p style="font-size: 28pt">CSS3 Transforms规范中transform属性的一个基本测试：使用<code>translate()</code>函数</p>
+    					<br>
+    					<br>
+    					<p>规范链接:</p>
+    					<p style="font-size: 16pt">
+    					    <a href="http://www.w3.org/TR/css3-transforms/#transform-property" target="top">http://www.w3.org/TR/css3-transforms/#transform-property</a>
+    					    <br>
+    					    <a href="http://www.w3.org/TR/css3-transforms/#two-d-transform-functions" target="top">http://www.w3.org/TR/css3-transforms/#two-d-transform-functions</a>
+					    </p>
+					</section>
+					<section>
+					    <img src="assets/images/specAssertion.png">
+					</section>
+	            </section>
+				<section data-state="screenshotPage">
+                      <section>
+                          <br>
+                          <h2>步骤 1 - OSX</h2>
+                          <p class="font5">按向下的箭头查看Windows的操作指令</p>
+              	        <br>
+              		    <p class="font2">更新你本地的CSSWG测试库</p>
+              		    <p style="font-size:22px">请完成该步骤，除非你刚把测试库复制下来</p>
+              		    <br>
+
+              	        <p style="font-size:30px">在终端中键入如下命令:</p>
+              		    <div class="console">
+              		        <div class="consoleText">
+              			        <br><br>
+              		            <p><tt>$ cd <span class="localPath">[path to repo]</span>/test</tt></p>
+              		            <p><tt>$ hg pull -u</tt></p>
+              		            <p><tt>$ ls -lR contributors/ttwf/samples</tt></p>
+              		        </div>
+              	        </div>
+              	        <br><br><br>
+              	        <div class="bottomNote">
+              	            <p class="font5">
+              	                注: 这些文件也可以从这里获取到:
+              	                <br>
+              	                <a href="assets/resources/ttwf-reftest-tutorial-starter.zip">ttwf-reftest-tutorial-starter.zip</a>
+              	            </p>
+              	        </div>
+                      </section>  
+                      
+                      <section>
+                          <br>
+                          <h2>步骤 1 - Windows</h2>
+                          <p class="font5">按向上的键头查看OS X的操作指令</p>
+              	        <br>
+              		    <p class="font2">更新你本地的CSSWG测试库</p>
+              		    <p style="font-size:22px">请完成该步骤，除非你刚把测试库复制下来</p>
+              		    <br>
+
+              	        <p style="font-size:30px">在终端中键入如下命令:</p>
+              		    <div class="console">
+              		        <div class="dosText">
+              			        <br><br>
+              		            <p><tt>> cd <span class="localPath">[path to repo]</span>\test</tt></p>
+              		            <p><tt>> hg pull -u</tt></p>
+              		            <p><tt>> dir contributors\ttwf\samples</tt></p>
+              		        </div>
+              	        </div>
+              	        <br><br><br>
+              	        <div class="bottomNote">
+              	            <p class="font5">
+              	                注: 这些文件也可以从这里获取到:
+              	                <br>
+              	                <a href="assets/resources/ttwf-reftest-tutorial-starter.zip">ttwf-reftest-tutorial-starter.zip</a>
+              	            </p>
+              	        </div>                                                 
+              	    </section>
+              	    
+                  </section>
+
+                  <section data-state="screenshotPage">
+                      <section>
+                          <br>
+              	         <h2>步骤 2 - OSX</h2>
+              	         <p class="font5">按向下的箭头查看Windows的操作指令</p>
+              		     <br>
+              		     <p class="font2">为你的新测试创建一个目录</p>
+              		     <br>
+              			 <div class="console">
+              			     <div class="consoleText">
+                				     <br><br><br>
+                				     <p><tt>$ cd <span class="localPath">[path to repo]</span>/test/contributors/ttwf/</tt></p>
+                				     <p><tt>$ mkdir -p <span class="localPath">yourName</span>/incoming</tt></p>
+                				     <p><tt>$ cd <span class="localPath">yourName</span>/incoming</tt></p>
+                			     </div>
+              		     </div>
+              	    </section>
+              	    <section>
+              	        <br>
+              	        <h2>步骤 2 - Windows</h2>
+              	        <p class="font5">按向上的箭头查看OS X的操作指令</p>
+              		    <br>
+              		    <p class="font2">为你的新测试创建一个目录</p>
+              		    <br>
+              			<div class="console">
+              			    <div class="dosText">
+                 				     <br>
+                 				     <br>
+                 				     <br>
+                 				     <p><tt>> cd <span class="localPath">[path to repo]</span>\test\contributors\ttwf</tt></p>
+                 				     <p><tt>> mkdir <span class="localPath">yourName</span>\incoming</tt></p>
+                 				     <p><tt>> cd <span class="localPath">yourName</span>\incoming</tt></p>
+                 			    </div>
+              		    </div>
+              	    </section>
+                  </section>
+
+                  <section data-state="screenshotPage">
+                      <section>
+                          <br>
+              	         <h2>步骤 3 - OSX</h2>
+              	         <p class="font5">按向下的箭头查看Windows的操作指令</p>
+              		     <br>
+              		     <p class="font2">将起始文件拷贝到你的incoming目录</p>
+              		     <br>
+              			 <div class="console">
+              			     <div class="consoleText">
+                				     <br>
+                				     <br>
+                				     <p><span class="localPath">在之前创建的incoming目录中</span></p>
+                			         <p><tt>$ cp -R ../../samples/ttwf-reftest-tutorial-starter/* .</tt></p>
+                			     </div>
+              		     </div>
+                      </section>
+                      <section>
+                          <br>
+                          <h2>步骤 3 - Windows</h2>
+              	         <p class="font5">按向上的箭头查看OS X的操作指令</p>
+              		     <br>
+              		     <p class="font2">将起始文件拷贝到你的incoming目录</p>
+              		     <br>
+              			 <div class="console">
+              			     <div class="dosText">
+                				     <br>
+                				     <br>
+                				     <p><span class="localPath">在之前创建的incoming目录中</span></p>
+                			         <p><tt>> xcopy /e ..\..\samples\ttwf-reftest-tutorial-starter .</tt></p>
+                			     </div>
+              		     </div>                        
+                      </section>
+                  </section>
+
+                  <section data-state="screenshotPage">
+                     <br>
+                     <h2>步骤 4</h2>
+              	     <br>
+                     <p class="font2">在文本编辑器中打开<tt>ttwf-reftest-tutorial-starter-001.html</tt></p>
+                  </section>
+
+                  <section data-state="screenshotPage">
+                     <br>
+              	     <h2>步骤 5.1 </h2>
+              	     <br>
+              	     <p class="font2">添加测试元数据</p>
+              	     <p class="font3">Title和Author</p>
+              	     				    <pre>
+                     					<code class="html">
+                     <span class="expand">
+    &lt;!DOCTYPE html&gt;
+     &lt;html&gt;
+         &lt;head&gt;
+         &lt;title&gt;CSS Transforms Test: transform property with translate function&lt;/title&gt;
+         &lt;link rel="author" title="Your Name" href="mailto:youremail@address.com"&gt;
+             . . .			
+                         </span>		        
+                     				    </code>
+                     				    </pre>
+              	     
+              		<div class="bottomNote3">
+                          <p class="font5">
+                              注: 在CSSWG Wiki上有关于元数据的详细信息<br>
+                              <a href="http://wiki.csswg.org/test/format#template-details">http://wiki.csswg.org/test/format#template-details</a>
+                          </p>
+                      </div>
+                  </section>
+                  
+                   <section data-state="screenshotPage">
+                        <br>
+                	     <h2>步骤 5.2</h2>
+                	     <br>
+                	     <p class="font2">添加测试元数据</p>
+                	     <p class="font3">参考文件的路径</p>
+                	     				    <pre>
+                       					<code class="html">
+                       <span class="expand">
+      &lt;!DOCTYPE html&gt;
+       &lt;html&gt;
+           &lt;head&gt;
+              . . .
+              &lt;link rel="match" href="reference/ttwf-reftest-tutorial-starter-ref.html"&gt;
+              . . .
+                           </span>		        
+                       				    </code>
+                       				    </pre>
+
+                		<div class="bottomNote3">
+                            <p class="font5">
+                                注: 在CSSWG Wiki上有关于元数据的详细信息<br>
+                                <a href="http://wiki.csswg.org/test/format#template-details">http://wiki.csswg.org/test/format#template-details</a>
+                            </p>
+                        </div>
+                    </section>
+                    
+                     <section data-state="screenshotPage">
+                             <br>
+                    	     <h2>步骤 5.3</h2>
+                    	     <br>
+                    	     <p class="font2">添加测试元数据</p>
+                    	     <p class="font3">规范链接</p>
+                    	     				    <pre>
+                           					<code class="html">
+                           <span class="expandPageMed">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        . . .
+        &lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#transform-property"&gt;
+        &lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#two-d-transform-functions"&gt;     
+        . . .
+                               </span>		        
+                           				    </code>
+                           				    </pre>
+
+                    		<div class="bottomNote3">
+                                <p class="font5">
+                                    注: 在CSSWG Wiki上有关于元数据的详细信息<br>
+                                    <a href="http://wiki.csswg.org/test/format#template-details">http://wiki.csswg.org/test/format#template-details</a>
+                                </p>
+                            </div>
+                        </section>
+                        
+                        <section data-state="screenshotPage">
+                                 <br>
+                        	     <h2>步骤 6</h2>
+                        	     <br>
+                        	     <p class="font2">给测试元素添加transform属性</p>
+                        	     
+                        	         <pre>
+                 				    <code class="html">
+             <span class="expand2">
+                    &lt;<span class="styleTag">style type</span>="text/css"&gt;
+                         <span class="styleTag">.greenSquare</span> {
+                             <span class="cssProperty">position: absolute;
+                             top: 0;
+                             left: 0;
+                             width: 100<span class="px">px</span>;
+                             height: 100<span class="px">px</span>;
+                             <span class="highlight">transform: translate(100<span class="px">px</span>,100<span class="px">px</span>);</span>
+                         }
+                         . . .
+                     &lt;/<span class="styleTag">style</span>&gt;</span>				        
+                 				    </code>
+                 				    </pre>
+
+                         </section>
+
+                         <section data-state="screenshotPage">
+                                 <br>
+                        	     <h2>步骤 7</h2>
+                        	     <br>
+                        	     <p class="font2">创建一个只在失败时可见的元素</p>
+                        	      <pre>
+                 				    <code class="html">
+                                    <span class="expand2">
+                     &lt;<span class="styleTag">style type</span>="text/css"&gt;
+                         . . .
+                         <span class="styleTag">.redSquare</span> {
+                             <span class="cssProperty">position: absolute;
+                             width: 98<span class="px">px</span>;
+                             height: 98<span class="px">px</span>;
+                             <span class="highlight">top: 101;</span>
+                             <span class="highlight">left: 101;</span>
+                         }
+                     &lt;/<span class="styleTag">style</span>&gt;</span>				        
+                 				    </code>
+                 				    </pre>
+
+                         </section>
+
+                         <section>
+                             <section data-state="screenshotPage">
+                                    <h2>步骤 8.1</h2>
+                        	        <br>
+                        	        <p class="font2">添加绿色填充颜色以显示通过状态</p>
+                        	        <pre>
+              				            <code class="html">
+                <span class="expand2">
+                      <span class="styleTag">.greenSquare</span> {
+                          <span class="cssProperty">position: absolute;
+                          top: 0;
+                          left: 0;
+                          width: 100<span class="px">px</span>;
+                          height: 100<span class="px">px</span>;
+                          transform: translate(100<span class="px">px</span>,100<span class="px">px</span>);
+                          <span class="highlight">background: green;</span>
+                      }</span>				        
+              				    </code>
+              				    </pre>
+                        </section>
+                        <section data-state="screenshotPage">
+                            <h2>步骤 8.2</h2>
+                    	    <br>
+                    	    <p class="font2">添加红色填充颜色以显示失败状态</p>
+                    	    <pre>
+          				    <code class="html">
+                <span class="expand2">
+                   <span class="styleTag">.redSquare</span> {
+                       <span class="cssProperty">position: absolute;
+                       width: 98<span class="px">px</span>;
+                       height: 98<span class="px">px</span>;
+                       top: 101;
+                       left: 101;
+                       <span class="highlight">background: red;</span>
+                   }
+              &lt;/<span class="styleTag">style</span>&gt;</span>				        
+          				    </code>
+          				    </pre>
+                    </section>
+                        
+                        
+                       </section>
+                        <section data-state="screenshotPage">
+                            <br>
+                             <h2>步骤 9</h2>
+                             <br>
+                             <p class="font2">在测试页上添加一句话使它变成自描述的测试</p>
+                              <pre>
+             				 <code class="html">
+         <span class="expand2">
+         &lt;body&gt;
+             &lt;p&gt;The test passes if there is a green square and no red.&lt;/p&gt;
+             . . .
+         &lt;/body&gt;
+         </span>    				        
+             			    </code>
+             			    </pre>
+
+                        </section>
+
+                        <section data-state="screenshotPage">
+                            <br>
+                             <h2>步骤 10</h2>
+                             <br>
+                             <p class="font2">在文本编辑器中打开<tt>reference/ttwf-reftest-tutorial-starter-ref.html</tt></p>
+    
+                        </section>
+
+                        <section data-state="screenshotPage">
+                            <br>
+                             <h2>步骤 11</h2>
+                             <br>
+                             <p class="font2">添加参考文件的元数据</p>
+                             <p class="font3">Title和Author</p>
+                             <pre>
+                                 
+        <span class="expand">
+                         	<code class="html">
+     &lt;!DOCTYPE html&gt;
+     &lt;html&gt;
+         &lt;head&gt;
+         &lt;title&gt;CSS Transforms Reference file&lt;/title&gt;
+         &lt;link rel="author" title="Your Name" href="mailto:youremail@address.com"&gt;
+         . . .
+                            </span>
+                            </code>
+   					    </pre>
+
+                    </section>
+                    <section data-state="screenshotPage">
+                        <br>
+                         <h2>步骤 12</h2>
+                         <br>
+                         <p class="font2">将参考元素的位置和颜色信息完全匹配测试文件的通过状态</p>
+                         <pre>
+     				    <code class="html">
+ <span class="expand2">
+                     &lt;<span class="styleTag">style type</span>="text/css"&gt;
+                         <span class="styleTag">.greenSquare</span> {
+                             <span class="cssProperty">position: absolute;
+                             width: 100<span class="px">px</span>;
+                             height: 100<span class="px">px</span>;
+                             <span class="highlight">top: 100;</span>
+                             <span class="highlight">left: 100;</span>
+                             <span class="highlight">background: green;</span>
+                         }
+                     &lt;/<span class="styleTag">style</span>&gt;</span>				        
+     				    </code>
+     				    </pre>
+
+                    </section>
+
+                    <section data-state="screenshotPage">
+                         <br>
+                         <h2>步骤 13</h2>
+                         <br>
+                         <p class="font2">并添加自描述的句子</p>
+                         <pre>
+         				 <code class="html">
+     <span class="expand2">
+         &lt;body&gt;
+             &lt;p&gt;The test passes if there is a green square and no red.&lt;/p&gt;
+             . . .
+         &lt;/body&gt;
+     </span>    				        
+         			    </code>
+         			    </pre>
+                    </section>
+
+                    <section data-state="screenshotPage">
+                        <br>
+                         <h2>步骤 14</h2>
+                         <br>
+                         <p class="font2">在浏览器中检查你的测试和参考文件，确认它们是相同的</p>
+                         <img src="assets/images/testFile.png">
+                         <img src="assets/images/refFile.png">
+                    </section>
+                    <section>
+                         <h3>失败测试的例子</h3>
+                         <br>
+                         <img src="assets/images/failingRefTest.png">
+                    </section>
+                    
+                     <section data-state="screenshotPage">
+                         <h2>提供商前缀</h2>
+                         
+                         <section data-state="screenshotPage">
+                             <br>
+                             <ul>
+                                 <li>在你开发测试时可能需要给CSS属性添加提供商前缀</li>
+                                 <li>如果前缀是必要的，那么没有的话测试显然会失败</li>
+                                 <li>但是，当把测试提交到W3C时不能包含这些前缀</li>
+                             </ul>    
+                             <br>
+                             <p class="font5">按向下的箭头查看本例的带提供商前缀的版本</p>
+                        </section>
+                        
+                        <section data-state="screenshotPage">
+                            <pre>
+                            <code class="html">
+                              <span class="expand2">
+                        <span class="styleTag">.greenSquare</span> {
+                              <span class="cssProperty">position: absolute;
+                              top: 0;
+                              left: 0;
+                              width: 100<span class="px">px</span>;
+                              height: 100<span class="px">px</span>;
+                              <span class="highlight">-webkit-transform: translate(100<span class="px">px</span>,100<span class="px">px</span>);</span>
+                              <span class="highlight">-moz-transform: translate(100<span class="px">px</span>,100<span class="px">px</span>);</span>
+                              <span class="highlight">-ms-transform: translate(100<span class="px">px</span>,100<span class="px">px</span>);</span>
+                              <span class="highlight">-o-transform: translate(100<span class="px">px</span>,100<span class="px">px</span>);</span>
+                              background: green;
+                          }</span> 
+                            </code>
+                            </pre>
+                            <p class="font5">按向下的箭头查看手工添加提供商前缀的另一个方法</p>
+                        </section>
+                        <section data-state="screenshotPage">
+                              <br>
+                              <p>在测试开发时我们推荐使用的脚本:</p>
+                              <p style="font-size: 18pt">
+                                  <a href="http://leaverou.github.com/prefixfree/">http://leaverou.github.com/prefixfree</a>
+                              </p>
+                              <p>prefixfree.jsapi.js扩展可用于无前缀的JS API测试:</p>
+                              <p style="font-size: 18pt">
+                                  <a href="https://github.com/LeaVerou/prefixfree/tree/gh-pages/plugins">https://github.com/LeaVerou/prefixfree/tree/gh-pages/plugins</a>
+                              </p>
+                              <p class="font4">在测试开发中，像这样引用这些脚本:</p>
+                              <pre>
+                              <code class="html">
+          <span class="expand2">
+            &lt;-- 记得在提交给W3C前移除 --&gt;
+
+            &lt;<span class="styleTag">script src</span>="prefixfree.js"&gt;&lt;<span class="styleTag">/script</span>&gt;
+            &lt;<span class="styleTag">script src</span>="plugins/prefixfree.jsapi.js"&gt;&lt;<span class="styleTag">/script</span>&gt;
+        </span>    				        
+              			    </code>
+              			    </pre>
+                          </section>
+                            
+                        </section>
+                        
+                    </section>
+                    
+                    <section data-state="screenshotPage">
+                          <section>
+                            <br>
+                  	        <h2>步骤 15 - OSX</h2>
+                  	        <p class="font5">按向下的箭头查看Windows的操作指令</p>
+                  	        <br>
+                  		    <p class="font2">将你的测试和参考文件添加到代码库中</p>
+                  			<div class="console">
+                  			    <div class="consoleText">
+                    				    <br>
+                    				    <p>$ cd <span class="localPath">[path to repo]</span>/test/contributors/ttwf/<span class="localPath">yourName</span>/incoming</p>
+                    			        <p>$ hg add ttwf-reftest-tutorial-001.html</p>
+                    			        <p>$ hg add reference</p>
+                    			        <p>$ hg commit -m "TTWF reftest tutorial"</p>
+                    			        <p>$ hg push</p>
+                    			    </div>
+                  		    </div>
+                               <div class="bottomNote2">
+                                   <br><br><br>
+                  		            <p class="noteText">注: 如果你收到如下错误信息:</p> 
+                  		            <p class="errorText">abort: push creates new remote head ...</p>
+                  		            <p class="noteText">Your local repository is out of sync with the test repository</p>
+                  		            <p class="noteText">按如下的步骤来解决问题:</p>
+                  		    </div>  
+                  	        <br><br><br><br><br><br><br>
+                              <div class="console">
+                  			    <div class="consoleText">
+                    				    <p class="localPath">只在你收到上述错误时进行以下步骤</p>
+                    			        <p>$ hg pull</p>
+                    			        <p>$ hg merge</p>
+                    			        <p>$ hg commit -m "Merge"</p>
+                    			        <p>$ hg push</p>
+                    			    </div>
+                  		    </div>          			    
+                  	    </section>
+                  	    <section>
+                  	        <br>
+                  	        <h2>步骤 15 - Windows</h2>
+                  	        <p class="font5">按向上的箭头查看OS X的操作指令</p>
+                  	        <br>
+                  		    <p class="font2">将你的测试和参考文件添加到代码库中</p>
+                  			<div class="console">
+                  			    <div class="dosText">
+                    				    <br>
+                    				    <p>> cd <span class="localPath">[path to repo]</span>\test\contributors\ttwf\<span class="localPath">yourName</span>\incoming</p>
+                    			        <p>> hg add ttwf-reftest-tutorial-001.html</p>
+                    			        <p>> hg add reference</p>
+                    			        <p>> hg commit -m "TTWF reftest tutorial"</p>
+                    			        <p>> hg push</p>
+                    			    </div>
+                  		    </div>
+                              <div class="bottomNote2">
+                                 <br><br><br>
+                  	            <p class="noteText">注: 如果你收到如下错误信息:</p> 
+                  	            <p class="errorText">abort: push creates new remote head ...</p>
+                  	            <p class="noteText">Your local repository is out of sync with the test repository</p>
+                  	            <p class="noteText">按如下的步骤来解决问题:</p>
+                  	        </div>  
+                  	        <br><br><br><br><br><br><br>
+                              <div class="console">
+                  			    <div class="dosText">
+                    				    <p class="localPath">只在你收到上述错误时进行以下步骤</p>
+                    			        <p>> hg pull</p>
+                    			        <p>> hg merge</p>
+                    			        <p>> hg commit -m "Merge"</p>
+                    			        <p>> hg push</p>
+                    			    </div>
+                  		    </div>      			               			    
+                  	    </section>
+                      </section>
+                      <section data-state="screenshotPage">
+                         <br>
+                  	     <h2>步骤 16</h2>
+                  	     <br><br>
+                  	     <h3>请规范专家检查你的测试</h3>
+                      </section>
+                      <section data-state="screenshotPage">
+                          <section>
+                             <br>
+                  		    <h2>步骤 17 - OSX</h2>
+                  		    <p class="font5">按向下的箭头查看Windows的操作指令</p>
+                  		    <br>
+                  		    <p class="font2">整合反馈意见并将测试移到submitted目录</p>
+                  		    <br>
+                  			<div class="consoleLarge">
+                  			    <div class="consoleText">
+                  			            <br>
+                    				    <p>$ cd <span class="localPath">[path to repo]</span>/test/contributors/ttwf/<span class="localPath">yourName</span></p>
+                    				    <p>$ hg pull -u</p>
+                    				    <p>$ hg merge</p>
+                    				    <p>$ hg commit -m "merging"</p>
+                    			        <p>$ hg mv incoming/ttwf-reftest-tutorial-001.html submitted/ttwf-reftest-tutorial-001.html</p>
+                    			        <p>$ hg mv incoming/reference/ttwf-reftest-tutorial-ref.html submitted/reference/ttwf-reftest-tutorial-ref.html</p>
+                    			        <p>$ hg commit -m "moved the TTWF reftest tutorial to the submitted folder"</p>
+                    			        <p>$ hg push</p>
+                    			    </div>
+                  		    </div>
+                  	    </section>
+                          <section>
+                            <br>
+                  	        <h2>步骤 17 - Windows</h2>
+                  		    <p class="font5">按向上的箭头查看OS X的操作指令</p>
+                  		    <br>
+                  		    <p class="font2">整合反馈意见并将测试移到submitted目录</p>
+                  		    <br>
+                  			<div class="consoleLarge">
+                  			    <div class="dosText">
+                  			         <br>
+                    				    <p>> cd <span class="localPath">[path to repo]</span>\test\contributors\ttwf\<span class="localPath">yourName</span></p>
+                    				    <p>> hg pull -u</p>
+                    				    <p>> hg merge</p>
+                    				    <p>> hg commit -m "merging"</p>
+                    			        <p>> hg mv incoming\ttwf-reftest-tutorial-001.html submitted\ttwf-reftest-tutorial-001.html</p>
+                    			        <p>> hg mv incoming\reference\ttwf-reftest-tutorial-ref.html submitted\reference\ttwf-reftest-tutorial-ref.html</p>
+                    			        <p>> hg commit -m "moved the TTWF reftest tutorial to the submitted folder"</p>
+                    			        <p>> hg push</p>
+                    			    </div>
+                  		    </div>
+                          </section>          		        
+                      </section>
+                      
+                      
+                      <section>
+                          <h1>W3C JavaScript<br>测试教程</h1>
+                      </section>
+
+      				<section>
+      					<h2>JavaScript测试概览</h2>
+      					<br>
+      					<ul>
+      					    <li>JavaScript测试通过编程的方式验证功能</li>
+      					    <li>JavaScript测试比起参考测试有几点优势
+      					        <ul>
+      					            <li>健壮</li>
+      					            <li>灵活</li>
+      					            <li>性能好</li>
+      					            <li>强大</li>
+      					        </ul>
+      					    </li>
+      					    <li>参考测试比起JavaScript测试有几点优势
+      					        <ul>
+      					            <li>验证完整的渲染</li>
+      					            <li>易于理解</li>
+      					            <li>对于不支持JavaScript的客户端也可以工作</li>
+      					            <li>避免引入额外的技术 (JS)</li>
+      					        </ul>
+      					    </li>
+      					</ul>
+      			    </section>
+
+      				<section>
+      				    <h2>JavaScript测试概览 (续)</h2>
+      				    <br>
+                          <ul style="line-height:60px">
+          					<li>JavaScript可以和参考测试一起使用
+          					    <ul>
+          				            <li>测试可以同时包含参考文件和JavaScript代码块</li>
+          				            <li>参考测试部分不需要脚本引擎</li>
+          				            <li>JavaScript部分可以自动化</li>
+          				        </ul>
+          				    </li>
+          				    <li>自描述的参考测试是推荐的测试格式</li>
+          				    <li>JavaScript测试应该在如下场景中使用
+          				        <ul>
+          				            <li>测试JavaScriptAPI或行为 (比如: CSSOM规范)</li>
+          				            <li>给参考测试添加自动化</li>
+          				        </ul>
+          				    </li>
+          				    <li>W3C提供了一个框架(<tt>testharness.js</tt>)来简化JavaScript测试的编写</li>
+      					</ul>
+      				</section>
+
+      				<section data-state="screenshotPage">
+      				    <br>
+  				        <h3>测试框架</h3>
+  				        <section>
+      				        <p style="font-size:24px"><tt>testharness.js</tt>和<tt>testharnessreport.js</tt></p>
+      				        <pre>
+      				            <code class="html" style="font-size:24px; line-height:26px">
+&lt;<span class="styleTag">script src</span>="/resources/testharness.js"&gt;&lt;<span class="styleTag">/script</span>&gt;
+&lt;<span class="styleTag">script src</span>="/resources/testharnessreport.js"&gt;&lt;<span class="styleTag">/script</span>&gt;
+                                </code>
+                            </pre>    
+          				    <ul style="line-height:60px">
+          				        <li>常用验证的JavaScript API</li>
+          				        <li>在<tt>testharness.js</tt>的注释区域有文档描述</li>
+          				        <li>所有的JavaScript测试都应该使用</li>
+          				    </ul>
+          				    <br><br>
+          				    <p class="font5">按向下的箭头获取更多信息</p>
+      				    </section>
+      				    <section>
+      				        <ul>
+          				        <li>路径必须是根级的<tt>/resources</tt>目录
+          				            <ul>
+          				                <li>在本地，resources目录可以放在任何位置</li> 
+          				                <li>在提交到CSSWG测试库前, 路径必须匹配上面的示例</li>
+          				            </ul>
+          				        </li>
+          				        <li>测试文件中应该存在<code>id="log"</code>的元素
+          				            <ul>
+          				                <li>测试结果表格会添加到这个元素，如果存在的话</li>
+          				            </ul>
+          				        </li>
+      				        </ul>
+      				    </section>
+      				</section>
+
+      				<section data-state="screenshotPage">
+      			        <section>
+          			        <h2>测试函数</h2>
+              			    <pre>
+              			        <code class="html" style="font-size:24px">
+            test(test_function, name, properties)
+              			        </code>
+              			    </pre>
+              			    <ul style="line-height:60px">
+              			        <li>用于同步测试
+              			            <ul>
+              			                <li><tt>testharness.js</tt>中定义的<code>async_test()</code>是用于异步测试的</li>
+              			            </ul>
+              			        </li>
+              			        <li>实现在<tt>testharness.js</tt>中</li>
+              			        <li>用于定义一个独立的测试用例
+              			            <ul>
+              			                <li>一个文件通常有多个<code>test()</code>的调用</li>
+              			            </ul>
+              			        </li>   
+              			        <li><tt>testharness.js</tt>对于每一个<code>test()</code>调用会显示PASS/FAIL信息</li>
+              			    </ul>
+              			    <br><br>
+              			    <p class="font5">按向下的箭头获取更多的信息</p>
+                          </section>
+
+                          <section>
+                              <h2>test() 参数 1: test_function</h2>
+              			    <pre>
+              			        <code class="html" style="font-size:24px">
+            test(<span style="color:red">test_function</span>, name, properties)
+              			        </code>
+              			    </pre>                        
+                              <ul style="line-height:60px">
+                                  <li><code>test_function</code>必须是一个对象，不是一个函数调用</li>
+                                  <li><code>test_function</code>应该包含测试断言方法
+                                      <ul>
+                                          <li>如果内置的断言方法不能满足需求, 看一下<tt>testharness.js</tt>如何自己编写一个</li>
+                                      </ul>
+                                  </li>
+                                  <li>断言的结果会决定PASS/FAIL</li>
+                                  <li>用法例子:
+                                      <pre style="font-size:18px">
+                                          <code>
+            test(<span class="highlight">function() { assert_true(true) }</span>, name, properties)
+                                          </code>
+                                      </pre>  
+                                  </li>                            
+          			        </ul>                   
+                          </section>
+
+                         <section>
+                              <h2>test() 参数 2: Name</h2>
+                              <pre>
+                                  <code class="html" style="font-size:24px">
+            test(test_function,<span style="color:red"> name</span>, properties)
+                                  </code>
+                              </pre>                        
+                              <ul style="line-height:60px">
+                                  <li><code>name</code>是用于标识测试的字符串</li> 
+                                  <li><code>name</code>应该简短，唯一，并且不会改变</li>
+              			          <li><code>name</code>会显示在测试结果表格里</li>
+                                  <li>用法例子:
+                                      <pre>
+                                          <code class="html" style="font-size:18px">
+    test(function() { assert_true(true) }, <span class="highlight">"test_name"</span>, properties)
+                                          </code>
+                                      </pre>  
+                                  </li>
+                              </ul>       			                                   
+                          </section>
+
+                          <section>
+                              <h2>test() 参数 3: Properties</h2>
+                              <pre>
+                                  <code class="html" style="font-size:24px">
+            test(test_function, name,<span style="color:red"> properties</span>)
+                                  </code>
+                              </pre>                        
+                              <ul style="line-height:60px">
+                                  <li><code>properties</code>使用覆盖默认值的对象</li>
+                                  <li><code>properties</code>是可选参数</li>
+                                  <li>可识别的属性包括<code>timeout</code>和metadata</li>
+                                  <li>用法例子:
+                                      <pre>
+                                          <code class="html" style="font-size:18px; line-height:16px">
+ test(function() { assert_true(true) }, "test_name", <br><br> <span class="highlight">{timeout:1000,</span> <br><br> <span class="highlight">help: 'http://www.w3.org/TR/spec#section',</span> <br><br> <span class="highlight">author: ['Bill Gates &lt;bgates@msn.com&gt;', 'Steve Jobs http://apple.com/sjobs'],</span><br><br> <span class="highlight">assert: 'This should always be true.'}</span>)
+                                          </code>
+                                      </pre>                                
+                                  </li>    			                    
+          			        </ul>
+          			        <p class="font5">关于定于测试元数据的细节, 可以查看CSSWG <a href="http://wiki.csswg.org/test/scripttest">Script Test Wiki Page</a></p>
+          			        
+                          </section>                        
+                      </section>
+
+              	    <section data-state="screenshotPage">
+              	        <section>
+          			        <h2>断言方法</h2>
+              			    <ul style="line-height:60px">
+              			        <li><tt>testharness.js</tt>提供了很多断言方法
+              			            <ul>
+              			                <li><tt>testharness.js</tt>的注释里有完整的方法列表</li>
+              			                <li>它们通常用于为<code>test()</code>服务的<code>test_function</code>中</li>
+              			            </ul>
+              			        </li>
+              			        <li>所有的断言方法包含一个可选的<code>description</code>参数，只在断言失败的时候才输出
+              			            <ul>
+              			                <li>用于提供额外的调试信息</li>
+              			            </ul>
+              			        </li>
+              			        <li>所有的断言必须位于对<code>test()的调用中</code>
+              			            <ul>
+              			                <li>位于外边的断言不会被正确地检测，并可能导致测试停止</li>
+              			            </ul>
+              			        </li>
+              			    </ul>
+              			    <br><br>
+              			    <p class="font5">按向下的箭头获取详细的信息</p>
+          			    </section>
+
+          			    <section>
+          			        <h2>断言示例</h2>
+                              <pre>
+                                  <code class="html" style="font-size:24px">
+        assert_equals(actual, expected, description)
+                                  </code>
+                              </pre>
+                              <ul style="line-height:60px">
+                                  <li><code>actual</code>: 所测功能的实际值</li>
+                                  <li><code>expected</code>: 期望值</li>
+                                  <li><code>description</code> (可选): 仅在断言失败时输出</li>
+                                  <li>用法例子:
+                                      <pre style="font-size:16px">
+                                          <code class="html">
+ assert_equals(getActualData("myElement"), 100, "Expected value for myElement is 100")
+                                          </code>
+                                      </pre>                                
+                                  </li>                            
+                              </ul>    			        
+          			    </section>
+      				</section>
+      				
+                    <section data-state="screenshotPage">
+                        <h2>测试用例示例</h2>
+                            <section>
+              					<br>
+              					<p style="font-size: 28pt">CSS3 Transforms规范中transform属性的一个基本测试：使用<code>translate()</code>函数</p>
+              					<p class="font4" style="color:#FF6B6B">与参考测试的例子类似, 但这次测的是API而不是渲染</p>
+              					<br>
+              					<p>规范链接:</p>
+              					<p style="font-size: 18pt">
+            					    <a href="http://www.w3.org/TR/css3-transforms/#transform-property" target="top">http://www.w3.org/TR/css3-transforms/#transform-property</a>
+            					    <br>
+            					    <a href="http://www.w3.org/TR/css3-transforms/#two-d-transform-functions" target="top">http://www.w3.org/TR/css3-transforms/#two-d-transform-functions</a>
+          					    </p>
+                                <br>
+                                <p class="font5">按向下的按钮获取更多的信息</p>
+                         </section> 
+                         <section>
+                              <img height="70%" width="70%" src="assets/images/specAssertion.png">
+                         </section>       
+
+                      </section>
+                      
+                      <section data-state="screenshotPage">
+          		        <h2>步骤 1</h2>
+          		        <br>
+          			    <p class="font2">复制一份JavaScript起始文件</p>
+          			    <p class="font2">在文本剪辑器中打开<span style="color:red">ttwf-js-tutorial-001.html</span></p>
+                        <pre>
+                            <code class="html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;CSS Transforms API Test: transform translate&lt;/title&gt;
+    &lt;link rel="author" title="Your Name" href="mailto:youremail@address.com"&gt;
+    &lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#transform-property"&gt;
+    &lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#two-d-transform-functions"&gt;
+    &lt;meta name="assert" content="The transform should be translate(100px,100px)"&gt;   
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;                  
+                            </code>
+                        </pre>
+                      </section>
+
+                      <section data-state="screenshotPage">
+          			     <h2>步骤 2</h2>
+              		     <p class="font2">更新元数据</p>
+
+      			        <ul style="line-height:60px">
+      			            <li>更新<code>author</code>元数据</li>
+      			            <li>添加<code>flags</code>元数据
+      			                <ul>
+      			                    <li><code>flags</code>描述了测试的先决条件</li>
+      			                    <li>完整的<code>flags</code>列表在CSSWG Wiki上可以查到<a href="http://wiki.csswg.org/test/format#requirement-flags">Test Format</a></li>
+      			                </ul>
+      			            </li>
+      			            <li>例子:</li>
+      			            <pre style="width:800px">
+      			                <code class="html">
+&lt;title&gt;CSS Transforms API Test: transform translate&lt;/title&gt;
+&lt;link rel="author" <span class="highlight">title="Jim Tester" href="mailto:jimmyt@yahoo.com"&gt;</span>
+&lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#transform-property"&gt;
+&lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#two-d-transform-functions"&gt;
+<span class="highlight">&lt;meta name="flags" content="dom"&gt;</span>
+&lt;meta name="assert" content="The transform should be translate(100px,100px)"&gt;  			                    
+      			                </code>
+      			            </pre>   
+        				    </ul> 
+                      </section>
+
+                      <section data-state="screenshotPage">
+              			<h2>步骤 3</h2>
+          			    <br>
+              		    <p class="font2">导入W3C JavaScript测试框架文件</p> 
+              		    <p class="font3">将如下代码添加到<code>head</code>块里</p>   
+  			            <pre style="width:600px">
+			                <code class="html">
+...
+&lt;<span class="styleTag">script src</span>="/resources/testharness.js"&gt;&lt;<span class="styleTag">/script</span>&gt;
+&lt;<span class="styleTag">script src</span>="/resources/testharnessreport.js"&gt;&gt;&lt;<span class="styleTag">/script</span>&gt;
+...
+                            </code>
+			            </pre>
+                          <p class="font5">注: 在开发过程中, <code>resources</code>目录的路径应该和该目录在本地的位置相匹配</p>
+                          <br>
+                          <p class="font5" style="font-weight:bold; color:#FF6B6B">在提交到CSSWG测试库前，脚本的路径必须指向<code>/resources</code>目录</p>
+                      </section>
+                      
+                      <section data-sate="screenshotPage">
+                          <h2>检查点</h2>
+                          <br>
+                          <p class="font2"><code>head</code>块应该显示如下</p>
+                          <p class="font3"><code>author</code>元数据应该包含你实际的名字和邮箱</p>
+                          <pre>
+                              <code class="html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;CSS Transforms API Test: transform translate&lt;/title&gt;
+  &lt;link rel="author" title="Your Name" href="mailto:youremail@address.com"&gt;
+  &lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#transform-property"&gt;
+  &lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#two-d-transform-functions"&gt;
+  &lt;meta name="flags" content="dom"&gt;
+  &lt;meta name="assert" content="The transform should be translate(100px,100px)"&gt; 
+  &lt;<span class="styleTag">script src</span>="/resources/testharness.js"&gt;&lt;<span class="styleTag">/script</span>&gt;
+  &lt;<span class="styleTag">script src</span>="/resources/testharnessreport.js"&gt;&lt;<span class="styleTag">/script</span>&gt;    
+&lt;/head&gt; 
+...                                 
+                              </code>
+                          </pre>
+                      </section>
+
+                      <section data-state="screenshotPage">
+                         <h2>步骤 4</h2>
+          			    <br>
+              		    <p class="font2">添加一个<code>div</code>到<code>&lt;body&gt;</code>中以作为测试元素</p>
+              		    <br>
+              		    <pre style="width:600px">
+              		        <code class="html">
+...
+&lt;body&gt;
+    &lt;div id="myDiv"&gt;&lt;/div&gt;
+&lt;body&gt;
+...
+              		        </code>
+              		    </pre>
+              		    <br>
+              		    <p class="font2"><code>transform</code> 将应用于该元素</p>
+                      </section>
+
+
+                      <section data-state="screenshotPage">
+              			<h2>步骤 5</h2>
+          			    <br>
+              		    <p class="font2">添加一个<code>id="log"</code>的<code>&lt;div&gt;</code>用于显示测试结果</p>
+              		    <br>
+              		    <pre style="width:600px">
+              		        <code class="html">
+...
+&lt;body&gt;
+    &lt;div id="myDiv"&gt;&lt;/div&gt;
+    <span class="highlight">&lt;div id="log"&gt;&lt;/div&gt;</span>
+&lt;body&gt;
+...
+              		        </code>
+              		    </pre>
+             			     <br>
+             			     <p class="font3"><tt>testharness.js</tt>会添加包含测试结果的HTML表格到该元素</p>
+                      </section>
+                      
+                      <section data-state="screenshotPage">
+                           <h2>步骤 6</h2>
+                           <br>
+                           <p class="font2">创建一个<code>&lt;<span class="styleTag">script</span>&gt;</code> 块来包含JavaScript代码</p>
+                           <br>
+             		       <pre style="width:600px">
+             		           <code class="html">
+...
+&lt;body&gt;
+   &lt;div id="myDiv"&gt;&lt;/div&gt;
+   &lt;div id="log"&gt;&lt;/div&gt;
+   <span class="highlight">&lt;<span class="styleTag">script</span>&gt;</span>
+   <span class="highlight">&lt;<span class="styleTag">/script</span>&gt;</span>
+&lt;body&gt;
+...
+             		        </code>
+             		    </pre>
+                      </section>
+
+                      <section>
+                          <h2>检查点</h2>
+                          <p class="font2">文件内容应该显示如下</p>
+                          <pre>
+                              <code class="html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;CSS Transforms API Test: transform translate&lt;/title&gt;
+  &lt;link rel="author" title="Your Name" href="mailto:youremail@address.com"&gt;
+  &lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#transform-property"&gt;
+  &lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#two-d-transform-functions"&gt;
+  &lt;meta name="flags" content="dom"&gt;
+  &lt;meta name="assert" content="The transform should be translate(100px,100px)"&gt; 
+  &lt;<span class="styleTag">script src</span>="/resources/testharness.js"&gt;&lt;<span class="styleTag">/script</span>&gt;
+  &lt;<span class="styleTag">script src</span>="/resources/testharnessreport.js"&gt;&lt;<span class="styleTag">/script</span>&gt;    
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="myDiv"&gt;&lt;/div&gt;
+  &lt;div id="log"&gt;&lt;/div&gt;
+  &lt;<span class="styleTag">script</span>&gt; 
+  &lt;<span class="styleTag">/script</span>&gt;    
+&lt;/body&gt;
+&lt;/html&gt;                              
+                              </code>
+                          </pre>
+                      </section>
+
+                      <section data-state="screenshotPage">
+                           <h2>步骤 7</h2>
+                           <br>
+                           <p class="font2">用JavaScript设置测试元素的<code>transform</code></p>
+                           <br>
+                           <pre style="width:800px">
+                               <code class="html">
+...
+&lt;body&gt;
+   &lt;div id="myDiv"&gt;&lt;/div&gt;
+   &lt;div id="log"&gt;&lt;/div&gt;
+   &lt;<span class="styleTag">script</span>&gt;
+       // Set the transform 
+       <span class="highlight">document.getElementById("myDiv").style.transform = "translate(100px,100px)";</span> 
+   &lt;<span class="styleTag">/script</span>&gt;    
+&lt;/body&gt;
+&lt;/html&gt;
+                            </code>
+                        </pre>
+                      </section>
+
+                      <section data-state="screenshotPage">
+          			     <h2>步骤 8</h2>
+              		     <p class="font2">在<code>script</code>块中添加一个<code>test()</code>的调用</p>
+              		     <p class="font3">在<code>test_function</code>中使用<code>assert_equals</code></p>
+                         <pre style="width:1000px">
+                             <code class="html">
+...
+&lt;body&gt;
+&lt;div id="myDiv"&gt;&lt;/div&gt;
+&lt;div id="log"&gt;&lt;/div&gt;
+&lt;<span class="styleTag">script</span>&gt;
+// Set the transform 
+document.getElementById("myDiv").style.transform = "translate(100px,100px)";
+
+// Verify that the transform was set as expected
+test(function() {assert_equals( //test arg1: test_function
+        document.getElementById("myDiv").style.getPropertyCSSValue("transform").cssText, //assert_equals arg 1: actual
+        "translate(100px,100px)", //assert_equals arg 2: expected
+        "transform should be translate(100px,100px)")}, //assert_equals arg 3: description
+        "Transform_Translate_100px_100px");  //test arg2: name    
+&lt;<span class="styleTag">/script</span>&gt;    
+&lt;/body&gt;
+&lt;/html&gt;
+                            </code>
+                         </pre>
+                        <p class="font3">参数的注释只用于澄清用途, 可以忽略</p>  
+          			</section>    	
+
+          			<section data-state="screenshotPage">
+                           <h2>完整的文件</h2>
+                           <pre>
+                               <code class="html" style="font-size:14px">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+   &lt;title&gt;CSS Transforms API Test: transform translate&lt;/title&gt;
+   &lt;link rel="author" title="Your Name" href="mailto:youremail@address.com"&gt;
+   &lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#transform-property"&gt;
+   &lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#two-d-transform-functions"&gt;
+   &lt;meta name="flags" content="dom"&gt;
+   &lt;meta name="assert" content="The transform should be translate(100px,100px)"&gt; 
+   &lt;<span class="styleTag">script src</span>="/resources/testharness.js"&gt;&lt;<span class="styleTag">/script</span>&gt;
+   &lt;<span class="styleTag">script src</span>="/resources/testharnessreport.js"&gt;&lt;<span class="styleTag">/script</span>&gt;    
+&lt;/head&gt;
+&lt;body&gt;
+   &lt;div id="myDiv"&gt;&lt;/div&gt;
+   &lt;div id="log"&gt;&lt;/div&gt;
+   &lt;<span class="styleTag">script</span>&gt;
+       document.getElementById("myDiv").style.transform = "translate(100px,100px)";
+       test(function() {assert_equals(
+               document.getElementById("myDiv").style.getPropertyCSSValue("transform").cssText,
+               "translate(100px,100px)", "transform should be translate(100px,100px)")},
+               "Transform_Translate_100px_100px");
+   &lt;<span class="styleTag">/script</span>&gt;    
+&lt;/body&gt;
+&lt;/html&gt;                                   
+                               </code>
+                           </pre>
+                       </section>
+
+                       <section data-state="screenshotPage">
+                   	     <h2>通过的例子</p>
+                   	     <img src="assets/images/jsTest_PASS.png">
+                       </section>
+
+                       <section data-state="screenshotPage">
+                   	     <h2>失败的例子</h2>
+                         <img src="assets/images/jsTest_FAIL.png">
+                       </section>
+
+                       <section data-state="screenshotPage">
+                           <section>
+                   	           <h2>步骤 10 - OSX</h2>
+                   	           <p class="font5">按向下的箭头获取Windows的操作指令</p>
+                   		       <p class="font3">将你的测试文件添加到代码库</p>
+                   		       <pre>
+                   		           <code style="font-size:18px; line-height:22px; height:120px">
+$ cd <span class="localPath">[path to repo]</span>/test/contributors/ttwf/<span class="localPath">yourName</span>/incoming
+$ hg add ttwf-js-tutorial-001.html
+$ hg commit -m "TTWF JavaScript tutorial"
+$ hg push
+                   		            </code>
+                   		       </pre>
+           		               <p class="font5" style="line-height:24px">如果你收到如下错误信息:
+           		               <span class="errorText">abort: push creates new remote head ...</span><br>
+           		            Your local repository is out of sync with the test repository. 这样解决:<br></p>
+                   		        <pre>
+                   		        <code style="font-size:18px; line-height:22px; height:120px">
+$ hg pull
+$ hg merge
+$ hg commit -m "Merge"
+$ hg push
+                   		        </code>
+                   		    </pre>         			       
+                   	    </section>
+                   	    <section>
+                   	        <h2>步骤 10 - Windows</h2>
+                   	        <p class="font5">按向上的箭头获取OS X的操作指令</p>
+                   		    <p class="font3">将你的测试文件添加到代码库</p>
+               		       <pre>
+               		           <code style="font-size:18px; line-height:22px; height:120px">
+> cd <span class="localPath">[path to repo]</span>\test\contributors\ttwf\<span class="localPath">yourName</span>\incoming
+> hg add ttwf-js-tutorial-001.html
+> hg commit -m "TTWF JavaScript tutorial"
+> hg push
+               		            </code>
+               		       </pre>
+       		               <p class="font5" style="line-height:24px">如果你收到如下错误信息:
+       		               <span class="errorText">abort: push creates new remote head ...</span><br>
+       		            Your local repository is out of sync with the test repository. 这样解决:<br></p>
+               		        <pre>
+               		        <code style="font-size:18px; line-height:22px; height:120px">
+> hg pull
+> hg merge
+> hg commit -m "Merge"
+> hg push
+               		        </code>
+               		    </pre>     			               			    
+                   	    </section>
+                       </section>
+
+                       <section data-state="screenshotPage">
+                   	     <h2>步骤 11</h2>
+                   	     <br><br><br>
+                   	     <h3>请规范专家检查你的测试</h3>
+                       </section>
+                       
+                       <section data-state="screenshotPage">
+                           <section>
+                           	    <h2>步骤 12 - OSX</h2>
+                           	    <p class="font5">按向下的箭头获取Windows的操作指令</p>
+                           	    <p class="font3">整合反馈意见并将测试移到submitted目录</p>
+                           	    <br>
+                           	    <pre>
+                           	        <code style="font-size:18px; line-height:22px; height:120px">
+$ cd <span class="localPath">[path to repo]</span>/test/contributors/ttwf/<span class="localPath">yourName</span>
+$ hg mv incoming/ttwf-js-tutorial-001.html submitted/ttwf-js-tutorial-001.html
+$ hg commit -m "moved the TTWF JavaScript tutorial to the submitted folder"
+$ hg push                       	            
+                           	        </code>
+                           	    </pre>
+                           </section>
+                           
+                           <section>
+                               <h2>步骤 12 - Windows</h2>
+                       	       <p class="font5">按向上的箭头获取OS X的操作指令</p>
+                           	   <p class="font2">整合反馈意见并将测试移到submitted目录</p>
+                          	   <pre>
+                      	           <code style="font-size:18px; line-height:22px; height:120px">
+> cd <span class="localPath">[path to repo]</span>\test\contributors\ttwf\<span class="localPath">yourName</span>
+> hg mv incoming\ttwf-js-tutorial-001.html submitted\ttwf-js-tutorial-001.html
+> hg commit -m "moved the TTWF JavaScript tutorial to the submitted folder"
+> hg push                       	            
+                      	            </code>
+                      	        </pre>
+                           </section>          		        
+                       </section>  
+
+                       <section data-state="screenshotPage">
+                           <br><br>
+                           <h2>祝贺你!</h2>
+                           <br><br>
+                           <p class="font1">你已经完成了W3C参考测试和JavaScript测试</p>
+                       </section>                 		    		     
+
+                       <section>
+                           <br><br><br><br><br>
+                           <h2>参考资料</h2>
+                       </section>
+
+                       <section data-state="screenshotPage">
+                           <h2>Mercurial命令参考</h2>
+                           <br>
+                           <section>
+                               <ul>
+                                   <li>基本命令:
+                                       <ul>
+                                           <li><tt>hg pull</tt>   (gets the latest changes from the CSSWG Test repo)</li>
+                                           <ul>
+                                               <li>To update after pull, use: <tt>hg pull -u</tt> (alleviates need to do hg update)</li>
+                                           </ul>                                
+                                           <li><tt>hg update (applies the latest changes pulled to your local repo)</tt></li>
+                                           <li><tt>hg status (displays list of locally changed files)</tt></li>
+                                           <li><tt>hg add    (stages a new or modified local file for commit)</tt></li>
+                                           <li><tt>hg remove (stages the removal of a local file for commit)</tt></li>
+                                           <li><tt>hg merge  (merges local changes with updates pulled from CSSWG Test repo)</tt></li>
+                                           <li><tt>hg commit (commits local changes to local repository)</tt></li>
+                                               <ul>
+                                                   <li>To include commit message, use: <tt>hg commit -m "</tt><span style="font-style:italic">Commit message here</span>"</li>
+                                               </ul>
+                                           <li><tt>hg push</tt>   (pushes local changes to the CSSWG Test repository)</li>
+                                       </ul>
+                                   </li>
+                                </ul>
+                                <br><br>
+                                <p class="font5">按向下的箭头获取更多信息</p>
+                           </section>
+                           <section>
+                               <ul>
+                                   <li>用户想更新本地的代码库:
+                                       <ul>
+                                           <li><tt>hg pull -u </tt> (pulls and applies latest changes from CSSWG repo to local repo)</li>
+                                       </ul>
+                                   </li>
+                                   <li>用户想推送本地的变化:
+                                       <ul>
+                                           <li><tt>hg status (check which files are stages for commit)</tt></li>
+                                           <li><tt>hg add <span style="font-style:italic">fileName</span> (stages file for commit, repeat for each file)</tt></li>
+                                           <li><tt>hg status (confirm all files are stages for commit)</tt></li>
+                                           <li><tt>hg commit -m "<span style="font-style:italic">Commit message here</span>" (Commit to local repo)</tt></li>
+                                           <li><tt>hg push (pushes locally committed changes to CSSWG Test repo)</tt>
+                                       </ul>
+                                   </li> 
+                                </ul>
+                                <br><br><br>
+                                <p class="font5">按向下的箭头获取更多信息</p>
+                            </section>
+                            <section>
+                               <ul>
+                                   <li>用户在推送时出现错误信息
+                                       <pre>
+                                           <code style="font-size:18px">
+abort: push creates new remote head ...
+                                            </code>
+                                        </pre>
+                                        <ul>
+                                            <li><tt>hg pull (gets newest changes from CSSWG Test repo)</tt></li>
+                                            <li><tt>hg merge (merges newest changes from CSSWG Test repo with local changes)</tt></li>
+                                            <li><tt>hg commit -m "Merge" (commits the merge to local repo)</tt></li>
+                                            <li><tt>hg push (pushes changes to CSSWG Test repo)</tt></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </section>
+                        </section>
+			</div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+			<div class="progress"><span></span></div>
+			
+		</div>
+
+		<!-- Optional libraries for code syntax highlighting and classList support in IE9 -->
+		<script src="lib/highlight.js"></script>
+		<script src="lib/classList.js"></script>
+		
+		<script src="js/reveal.js"></script>
+		
+		<script>
+			// Parse the query string into a key/value object
+			var query = {};
+			location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+				query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+			} );
+
+			// Fires when a slide with data-state=customevent is activated
+			Reveal.addEventListener( 'customevent', function() {
+				alert( '"customevent" has fired' );
+			} );
+
+			// Fires each time a new slide is activated
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				// event.indexh & event.indexv
+			} );
+
+			Reveal.initialize({
+				// Display controls in the bottom right corner
+				controls: true,
+
+				// Display a presentation progress bar
+				progress: true,
+
+				// If true; each slide will be pushed to the browser history
+				history: true,
+
+				// Loops the presentation, defaults to false
+				loop: false,
+
+				// Flags if mouse wheel navigation should be enabled
+				mouseWheel: true,
+
+				// Apply a 3D roll to links on hover
+				rollingLinks: true,
+
+				// UI style
+				theme: query.theme || 'default', // default/neon
+
+				// Transition style
+				transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
+			});
+
+			hljs.initHighlightingOnLoad();
+		</script>
+
+	</body>
+</html>
