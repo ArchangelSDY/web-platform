@@ -1,0 +1,784 @@
+<!doctype html>  
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		
+		<title>Test the Web Forward</title>
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/print.css" type="text/css" media="print">
+
+		<link rel="stylesheet" href="lib/textmate.css">
+		<link rel="stylesheet" href="css/adobe.css">
+	</head>
+	
+	<body>
+		
+		<div class="reveal">
+
+			<!-- Used to fade in a background when a specific slide state is reached -->
+			<div class="state-background"></div>
+			
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>W3C测试教程</h2>
+					<img src="assets/images/W3C_logo.jpg">
+					<script>
+						// Delicously hacky. Look away.
+						if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
+					</script>
+				</section>
+				
+                <section>
+                    <h2>目录结构</h2>
+                    <section>
+                        <br>
+                        
+                        <ul>
+                        <li style="list-style-type: none;">CSSWG测试代码库</li>
+                        <ul>
+                            <li><tt>contributors</tt></li>
+                            <ul>
+                                <li><tt>ttwf_bj</tt></li>
+                                <ul>
+                                    <li><tt><em>your_csswg_id</em></tt></li>
+                                    <ul>
+                                        <li><tt>incoming</tt>（<-工作目录）</li>
+                                        <li><tt>submitted</tt></li>
+                                    </ul>
+                                </ul>
+                            </ul>
+                        </ul>
+                    
+                    </section>
+                    <section>
+                        <img src="assets/images/directoryStructure.png"/>
+                    </section>
+                </section>
+
+				<section>
+					<h2>Reftest概览</h2>
+	                <blockquote>
+					<ul>
+					    <li class="fragment">两个文件: 测试文件 + 参考文件</li>
+					    <li class="fragment">测试文件使用了待测功能</li>
+					    <li class="fragment">参考文件没有使用待测功能，但在视觉上是一样的</li>
+						<li class="fragment">自描述文本(手工和自动测试都适用)</li>
+						<li class="fragment">跨浏览器并且跨平台</li>
+					</ul>
+					</blockquote>
+				</section>
+				
+    			<section>
+    				<h2>测试用例示例</h2>
+    				<section>
+    					<br><br>
+    					<p style="font-size: 28pt">CSS3 Transforms规范中transform属性的一个基本测试：使用<code>translate()</code>函数</p>
+    					<br>
+    					<br>
+    					<p>规范链接:</p>
+    					<p style="font-size: 16pt">
+    					    <a href="http://www.w3.org/TR/css3-transforms/#transform-property" target="top">http://www.w3.org/TR/css3-transforms/#transform-property</a>
+    					    <br>
+    					    <a href="http://www.w3.org/TR/css3-transforms/#two-d-transform-functions" target="top">http://www.w3.org/TR/css3-transforms/#two-d-transform-functions</a>
+					    </p>
+					</section>
+					<section>
+					    <img src="assets/images/specAssertion.png">
+					</section>
+	            </section>
+				
+				<section data-state="screenshotPage">
+				    <br>
+				    <h3>示例文件</h3>
+    			    <img src="assets/images/001a.png">
+    			    <img src="assets/images/001b.png">
+            	</section>
+			
+				<section data-state="expandPageWide">
+				    <br>
+				    <h3>所需的元数据: Title</h3>
+				    <br>
+				    <p>测试文件</p>
+				    <pre>
+					<code class="html">
+<span class="expand">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;title&gt;CSS Transforms Test: transform property with translate function&lt;/title&gt;
+        . . .			
+    </span>		        
+				    </code>
+				    </pre>
+		            <p>参考文件</p>
+		            <pre>
+                    <code>
+<span class="expand">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;title&gt;CSS Transforms Reference file&lt;/title&gt;
+        . . .			
+</span>
+                    </code>
+                    </pre>
+			    </section>
+                
+                <section  data-state="expandPageWide">
+                    <br>
+    			    <h3>所需的元数据: Author</h3>
+                    <br>
+                    <p>测试文件</p>
+                    <pre>
+                    <code class="html">
+<span class="expand">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    . . .			
+    &lt;link rel="author" title="Your Name" href="mailto:youremail@address.com"&gt;
+    . . .			
+</span>		        
+				    </code>
+				    </pre>
+		            <p>参考文件</p>
+                    <pre>
+                    <code>
+<span class="expand">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    . . .
+    &lt;link rel="author" title="Your Name" href="mailto:youremail@address.com"&gt;
+    . . .			
+</span>
+                    </code>
+                    </pre>
+                </section>
+                
+                <section  data-state="expandPageWide">
+                    <br>
+    			    <h3>所需的元数据: 规范链接</h3>
+    			    <p>仅用于测试文件</p>
+                    <pre>
+                    <code>
+<span style="font-size: 16pt;" class="expand">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  . . .
+  &lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#transform-property"&gt;
+  &lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#two-d-transform-functions"&gt;          
+  . . .
+</span>
+                    </code>
+                    </pre>
+    			</section>
+
+                <section  data-state="expandPageWide">
+                    <br>
+    			    <h3>所需的元数据: 参考文件路径</h3>
+        		    <p>仅用于测试文件</p>
+                    <pre>
+                    <code>
+<span class="expand">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    . . .   
+    &lt;link rel="match" href="reference/ttwf-Reftest-tutorial-ref.html"&gt;
+    . . .
+</span>
+                        </code>
+                        </pre>
+    			</section>
+    		    
+    		    <section data-state="expandPageWide">
+    		        <br>
+    		        <h3>所需的元数据: 断言</h3>
+                    <section data-state="expandPageWide">
+            	        <p>仅用于测试文件</p>
+                        <pre>
+                        <code>
+<span style="font-size: 16pt;" class="expand">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+. . .   
+&lt;meta name="assert" 
+  content="This transform moves the element by 100 pixels in both the X and Y directions."&gt;
+. . .
+</span>
+                        </code>
+                        </pre>
+                        <p>大家尽量把这个写得完整一些，便于在测试失败时分析原因</p>
+    			    </section>
+    			    <section data-state="expandPageWide">
+			            <img src="assets/images/specAssertion.png">
+			        </section>
+    			</section>
+    		
+    			
+    			<section  data-state="expandPageWide">
+    			    <br>
+    			    <h3>测试</h3>
+    			    <section data-state="expandPageWide">
+    				    <p>应用transform的测试元素</p>
+    				    <pre>
+    				    <code class="html">
+<span class="expand2">
+                &lt;<span class="styleTag">style type</span>="text/css"&gt;
+                    <span class="styleTag">.greenSquare</span> {
+                        <span class="cssProperty">position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100<span class="px">px</span>;
+                        height: 100<span class="px">px</span>;
+                        background: green;</span>
+                        transform: translate(100<span class="px">px</span>,100<span class="px">px</span>);
+                    }
+                    . . .
+                &lt;/<span class="styleTag">style</span>&gt;</span>				        
+    				    </code>
+    				    </pre>
+    			    </section>
+
+    			    <section  data-state="expandPageWide">
+    				    <p>参考元素</p>
+    				    <pre>
+    				    <code class="html">
+<span class="expand2">
+                    &lt;<span class="styleTag">style type</span>="text/css"&gt;
+                        <span class="styleTag">.greenSquare</span> {
+                            <span class="cssProperty">position: absolute;
+                            top: 100;
+                            left: 100;
+                            width: 100<span class="px">px</span>;
+                            height: 100<span class="px">px</span>;
+                            background: green;</span>
+                        }
+                    &lt;/<span class="styleTag">style</span>&gt;
+</span>				        
+    				    </code>
+    				    </pre>
+    			    </section>
+                </section>
+                
+                <section  data-state="expandPageWide">
+                    <br>
+    			    <h3>可见的验证失败</h3>
+    			    <section data-state="expandPageWide">
+    			        <p>元素只在测试失败时可见</p>
+    			         <pre>
+        				    <code class="html">
+<span class="expand2">
+                        &lt;<span class="styleTag">style type</span>="text/css"&gt;
+                            . . .
+                            <span class="styleTag">.redSquare</span> {
+                                <span class="cssProperty">position: absolute;
+                                top: 101;
+                                left: 101;
+                                width: 98<span class="px">px</span>;
+                                height: 98<span class="px">px</span>;
+                                background: red;</span>
+                            }
+                        &lt;/<span class="styleTag">style</span>&gt;    
+</span>				        
+        				    </code>
+        				    </pre>
+    			    </section>
+    			    <section data-state="expandPageWide">
+    				    <p>测试失败的例子</p>
+    				    <img src="assets/images/failingRefTest.png"/>
+    			    </section>
+    			</section>
+    			
+    			<section data-state="expandPageWide">
+    			    <section data-state="expandPageWide">
+    			    <br>
+    			    <h3>自描述</h3>
+    			    <p style="font-size: 24pt">当测试通过时页面应该如何渲染的简单句子</p>
+    				<br>
+    				<p style="font-size: 24pt"> 测试和参考文件 </p>
+    				 <pre>
+    				 <code class="html">
+<span class="expand2">
+    &lt;body&gt;
+        &lt;p&gt;The test passes if there is a green square and no red.&lt;/p&gt;
+        . . .
+    &lt;/body&gt;
+</span>    				        
+    			    </code>
+    			    </pre>
+                </section>
+                </section>
+                
+                <section  data-state="expandPageWide">
+                    <section data-state="expandPageWide">
+        		    <h3>添加元素</h3>
+        		    <p>测试文件</p>
+        		     <pre>
+    				 <code class="html">
+<span class="expand2">
+                &lt;body&gt;
+                    . . .
+                    &lt;div class="redSquare"&gt;&lt;/div&gt;
+                    &lt;div class="greenSquare"&gt;&lt;/div&gt;
+                &lt;/body&gt;
+</span>    				        
+    			    </code>
+    			    </pre>
+    			    <p>参考文件</p>
+                     <pre>
+    				 <code class="html">
+<span class="expand2">
+                &lt;body&gt;
+                    . . .
+                    &lt;div class="greenSquare"&gt;&lt;/div&gt;
+                &lt;/body&gt;
+</span>    				        
+    			    </code>
+    			    </pre>
+                </section>
+                </section>
+                
+                <section data-state="expandPageWide">
+                    <br>
+                    <h2>提供商前缀</h2>
+               
+                   <section data-state="expandPageWide">
+                       <br>
+                       <blockquote>
+                       <ul>
+                           <li>你可能需要给测试中的CSS属性添加提供商前缀</li>
+                           <li>如果前缀是必要的，那么没有的话测试显然会失败</li>
+                           <li>但是，当把测试提交到W3C时不能包含这些前缀</li>
+                       </ul>   
+                       </blockquote> 
+                       <br>
+                       
+                  </section>
+              
+                  <section data-state="expandPageWide">
+                      <pre>
+                      <code class="html">
+                        <span class="expand2">
+                <span class="styleTag">.greenSquare</span> {
+                    <span class="cssProperty">position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100<span class="px">px</span>;
+                    height: 100<span class="px">px</span>;
+                    <span class="highlight">-webkit-transform: translate(100<span class="px">px</span>,100<span class="px">px</span>);</span>
+                    <span class="highlight">-moz-transform: translate(100<span class="px">px</span>,100<span class="px">px</span>);</span>
+                    <span class="highlight">-ms-transform: translate(100<span class="px">px</span>,100<span class="px">px</span>);</span>
+                    <span class="highlight">-o-transform: translate(100<span class="px">px</span>,100<span class="px">px</span>);</span>
+                    background: green;
+                }</span> 
+                      </code>
+                      </pre>
+                  </section>
+                  
+                  <section data-state="expandPageWide">
+                      <br>
+                      <p>在测试开发时我们推荐使用的脚本:</p>
+                      <p style="font-size: 18pt">
+                          <a href="http://leaverou.github.com/prefixfree/">http://leaverou.github.com/prefixfree</a>
+                      </p>
+                      <p>prefixfree.jsapi.js扩展可用于无前缀的JS API测试:</p>
+                      <p style="font-size: 18pt">
+                          <a href="https://github.com/LeaVerou/prefixfree/tree/gh-pages/plugins">https://github.com/LeaVerou/prefixfree/tree/gh-pages/plugins</a>
+                      </p>
+                      <pre>
+                      <code class="html">
+  <span class="expand2">
+        . . .
+        
+        &lt;-- Remember to remove before pushing to W3C test suite --&gt;
+            
+        &lt;script src="prefixfree.js"&gt;&lt;<span class="styleTag">/script</span>&gt;
+        &lt;script src="plugins/prefixfree.jsapi.js"&gt;&lt;<span class="styleTag">/script</span>&gt;
+        
+        . . .
+  </span>    				        
+      			    </code>
+      			    </pre>
+                  </section>
+                      
+                  </section>
+                  
+                  <section>
+                      <h1>Reftest Q & A</h1>
+                  </section>
+    			
+				<!-- Begin JS TEST -->
+
+				<section>
+					<h2>JavaScript测试概览</h2>
+					<br>
+					<ul>
+					    <li>JavaScript测试通过编程的方式验证功能</li>
+					    <li>JavaScript测试比起参考测试有几点优势：
+					        <ul>
+					            <li>健壮</li>
+					            <li>灵活</li>
+					            <li>性能好</li>
+					        </ul>
+					    </li>
+					    <li>参考测试比起JavaScript测试有几点优势：
+					        <ul>
+					            <li>验证完整的渲染</li>
+					            <li>易于理解</li>
+                                <li>对于不支持JavaScript的客户端也可以工作</li>
+					        </ul>
+					    </li>
+                        <li>JavaScript可以和参考测试一起使用</li>
+					</ul>
+			    </section>    
+
+
+    				<section>
+    			        <h3>W3C提供的测试框架</h3>
+    			        <p><tt>testharness.js</tt> 和 <tt>testharnessreport.js</tt></p>
+    			        <pre>
+    			            <code class="html">
+    &lt;<span class="styleTag">script src</span>="/resources/testharness.js"&gt;&lt;<span class="styleTag">/script</span>&gt;
+
+    &lt;<span class="styleTag">script src</span>="/resources/testharnessreport.js"&gt;&lt;<span class="styleTag">/script</span>&gt;
+                            </code>
+                        </pre>    
+    				    <ul>
+    				        <li>所有的JavaScript测试都应该使用</li>
+                            <li>包含常用的验证API</li>
+    				        <li>路径必须是根级的<tt>/resources</tt>目录</li>
+    				        <li>测试文件中应该存在<code>id="log"</code>的元素
+                                <ul>
+                                    <li>测试结果表格会添加到这个元素，如果存在的话</li>
+                                </ul>
+                            </li>
+    				    </ul>
+    				</section>
+
+    				<section>
+    			        <section>
+        			        <h2>测试函数</h2>
+            			    <br>
+            			    <pre>
+            			        <code class="html">
+            test(test_function, name, properties)
+            			        </code>
+            			    </pre>
+            			    <ul>
+            			        <li>用于同步测试
+            			            <ul>
+            			                <li><tt>testharness.js</tt>中定义的<code>async_test()</code>是用于异步测试的</li>
+            			            </ul>
+            			        </li>
+            			        <li>用于定义一个独立的测试用例
+            			            <ul>
+            			                <li>一个文件通常有多个<code>test()</code>的调用</li>
+            			            </ul>
+            			        </li>   
+            			        <li><tt>testharness.js</tt>对于每一个<code>test()</code>调用会显示PASS/FAIL信息</li>
+
+            			    </ul>
+                        </section>
+
+                        <section>
+                            <h2>test() 参数 1: test_function</h2>
+            			    <pre>
+            			        <code class="html">
+            test(<span style="color:red">test_function</span>, name, properties)
+            			        </code>
+            			    </pre>                        
+                            <ul>
+                                <li><code>test_function</code>必须是一个对象，不是一个函数调用</li>
+                                <li><code>test_function</code>应该包含测试断言方法</li>
+                                <li>用法例子:
+                                    <pre>
+                                        <code>
+            test(<span class="highlight">function() {assert_true(true)}</span>, name, properties)
+                                        </code>
+                                    </pre>  
+                                </li>                            
+        			        </ul>                   
+                        </section>
+
+                       <section>
+                            <h2>test() 参数 2: Name</h2>
+                            <pre>
+                                <code class="html">
+            test(test_function,<span style="color:red"> name</span>, properties)
+                                </code>
+                            </pre>                        
+                            <ul>
+                                <li><code>name</code>是用于标识测试的字符串，比如“Transform_Translate_100px_100px”</li> 
+                                <li><code>name</code>应该简短，唯一，并且不会改变</li>
+            			        <li><code>name</code>会显示在测试结果表格里</li>
+                            </ul>       			                                   
+                        </section>
+
+                        <section>
+                            <h2>test() 参数 3: Properties</h2>
+                            <pre>
+                                <code class="html">
+            test(test_function, name,<span style="color:red"> properties</span>)
+                                </code>
+                            </pre>                        
+                            <ul>
+                                <li>该参数是可选的，用于覆盖默认值</li>
+                                <li>用法例子:
+                                    <pre style="font-size:18px">
+                                        <code class="html">
+ test(function() { assert_true(true) }, "test_name", <br><br> <span class="highlight">{timeout:1000,</span> <br><br> <span class="highlight">help: 'http://www.w3.org/TR/spec#section',</span> <br><br> <span class="highlight">author: ['Bill Gates &lt;bgates@msn.com&gt;', 'Steve Jobs http://apple.com/sjobs'],</span><br><br> <span class="highlight">assert: 'This test something.', 'This also tests something else.'}</span>)
+                                        </code>
+                                    </pre>                                
+                                </li>    			                    
+        			        </ul>
+                        </section>                        
+                    </section>
+
+            	    <section>
+            	        <section>
+        			        <h2>断言方法</h2>
+            			    <ul>
+            			        <li><tt>testharness.js</tt>提供了很多断言方法
+                                    <ul>
+                                        <li>assert_true, assert_false, assert_equals, assert_not_equals, ...</li>
+                                    </ul>
+                                </li>
+                                <li>所有的断言必须位于对<code>test()的调用中</code>
+                                    <ul>
+                                        <li>位于外边的断言不会被正确地检测，并可能导致测试停止</li>
+                                    </ul>
+                                </li>
+                                <li>所有的断言方法包含一个可选的<code>description</code>参数，只在断言失败的时候才输出，用于提供额外的调试信息</li>
+   
+            			    </ul>
+        			    </section>
+
+        			    <section>
+        			        <h2>断言示例</h2>
+                            <pre>
+                                <code class="html">
+        assert_equals(actual, expected, description)
+                                </code>
+                            </pre>
+                            <ul>
+                              <li><code>actual</code>: 所测功能的实际值</li>
+                              <li><code>expected</code>: 期望值</li>
+                              <li><code>description</code> (可选): 仅在断言失败时输出</li>
+                              <li>用法例子:
+                                    <pre style="font-size:18px">
+                                        <code class="html">
+ assert_equals(getActualData("myElement"), 100, "Expected value for myElement is 100")
+                                        </code>
+                                    </pre>                                
+                                </li>                            
+                            </ul>    			        
+        			    </section>
+    				</section>
+
+                	<section>
+        				<h2>测试用例示例</h2>
+        				<section>
+        					<br>
+        					<p>CSS3 Transforms规范中transform属性的一个基本测试：使用<code>translate()</code>函数</p>
+        					<br><br>
+        					<p>规范链接:</p>
+        					<p style="font-size: 16pt">
+        					    <a href="http://www.w3.org/TR/css3-transforms/#transform-property" target="top">http://www.w3.org/TR/css3-transforms/#transform-property</a>
+        					    <br>
+        					    <a href="http://www.w3.org/TR/css3-transforms/#two-d-transform-functions" target="top">http://www.w3.org/TR/css3-transforms/#two-d-transform-functions</a>
+    					    </p>
+    					</section>
+    					<section>
+    					    <img src="assets/images/specAssertion.png">
+    					</section>
+    	            </section>			
+
+    			    <section>
+    			        <h3>元数据</h3>
+    			        <section>
+        			        <pre style="width:975px">
+        			            <code class="html" style="line-height:26px; font-size:18px">
+&lt;head&gt;
+  &lt;title&gt;CSS Transforms API Test: transform translate&lt;/title&gt;
+  &lt;link rel="author" title="Your Name" href="mailto:youremail@address.com"&gt;
+  &lt;link rel="help" href="http://www.w3.org/TR/css3-transforms/#transform-property"&gt;
+  &lt;link rel="help" 
+    href="http://www.w3.org/TR/css3-transforms/#two-d-transform-functions"&gt;
+  &lt;meta name="flags" content="dom"&gt;
+  &lt;meta name="assert" content="The transform should be translate(100px,100px)"&gt;	
+...    
+&lt;/head&gt;                
+        			            </code>
+        			        </pre>
+        			        <ul style="line-height:60px">
+        			            <li><code>flags</code>中的<code>dom</code>指明了JavaScript的支持是需要的</li>
+        			    </section>
+        			    <section>
+        			        <pre>
+        			            <code class="html" style="line-height:26px; font-size:24px">
+&lt;head&gt;
+...    
+    &lt;<span class="styleTag">script src</span>="/resources/testharness.js"&gt;&lt;/<span class="styleTag">script</span>&gt;
+    &lt;<span class="styleTag">script src</span>="/resources/testharnessreport.js"&gt;&lt;/<span class="styleTag">script</span>&gt;    
+&lt;/head&gt;    			                
+    			            </code>
+        			        </pre>
+        			        <ul>
+        			            <li>导入<tt>testharness.js</tt>和<tt>testharnessreport.js</tt></li>
+        			            <li>脚本的路径都指向根级的<code>/resources</code>目录</li>
+        			        </ul>
+        			    </section>
+    			    </section>				
+
+			    
+			    <section data-state="largePage" style="left:-5%">
+			        <h3>正文</h3>
+			        <pre style="width:1150px">
+			            <code class="html" style="line-height:22px; font-size:18px">
+&lt;body&gt;
+    &lt;div id="myDiv"&gt;&lt;/div&gt;
+    &lt;div id="log"&gt;&lt;/div&gt;    
+
+    &lt;<span class="styleTag">script</span>&gt;
+        // Set the transform 
+        document.getElementById("myDiv").style.transform = "translate(100px,100px)";
+
+        // Verify that the transform was set as expected
+        test(function() {assert_equals(
+            document.getElementById("myDiv").style.getPropertyCSSValue("transform").cssText, //Actual
+            "translate(100px, 100px)",  //Expected
+            "transform should be translate(100px,100px)")}, //Description
+            "Transform_Translate_100px_100px"); //name
+    &lt;<span class="styleTag">/script</span>&gt;
+&lt;/body&gt;			                
+			            </code>
+			        </pre>
+			        <ul style="font-size:28px">
+			            <li><code>myDiv</code>用作测试元素 - 通过JS应用translate</li>
+			            <li><code>log</code>用作测试结果容器</li>
+			            <li><code>test()</code> 用 <code>assert_equals</code> 作为 <code>test_function</code></li>
+			        </ul>			        
+			    </section>
+ 			    
+    			<section data-state="largePage">
+    			    <section>
+    				    <h3>测试结果</h3>
+    				    <p>通过</p>
+    				    <img src="assets/images/jsTest_PASS.png"/>
+    			    </section>
+    			    
+                    <section>
+    				    <h3>测试结果</h3>
+    				    <p>失败</p>
+    				    <img src="assets/images/jsTest_FAIL.png"/>
+    			    </section>    			    
+                </section>
+
+                <section>
+                    <h3>设计和编写测试用例的提示</h3>
+                    <ul>
+                        <li class="fragment">注意规范中的算法描述部分</li>
+                        <li class="fragment">查找规范关于一致性需求的陈述（MUST, MUST NOT, SHOULD, SHOULD NOT, MAY）</li>
+                        <li class="fragment" style="list-style-type: none;">
+                            <ul>
+                                <li><i>On getting, it <span class="highlight">must</span> return its current value. On setting, if the new value is one of 'none', 'copy', 'link', or 'move', then the attribute's current value <span class="highlight">must</span> be set to the new value. Other values <span class="highlight">must</span> be ignored.</i></li>
+high
+                                <li><i>If both 'left' and 'right’ are 'auto', the flex item <span class="highlight">must</span> be positioned so that its main-start or cross-start edge (whichever is in the horizontal axis) is aligned with the static position.</i></li>
+                            </ul>
+                        </li>
+                        <li class="fragment">单一的需求陈述通常需要多个测试来涵盖，一个测试也可以涵盖多个需求陈述</li>
+                        <li class="fragment">考虑特殊值及极端场景</li>
+                        <li class="fragment">当浏览器完全不支持规范时的测试结果应该是失败的</li>
+                    </ul>
+                </section>                                                    
+    			<section>
+                    <h3>测试用例跟踪统计</h3>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="https://docs.google.com/spreadsheet/ccc?key=0Ala20WIRMtmMdGVlU251dHVQUDhCRTRpYk5lTVAzWWc" target="top">Google Docs统计页面</a>
+                </section>
+    			<section>
+    			    <h1>Q & A</h1>
+    			</section>
+			</div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+			<div class="progress"><span></span></div>
+			
+		</div>
+
+		<!-- Optional libraries for code syntax highlighting and classList support in IE9 -->
+		<script src="lib/highlight.js"></script>
+		<script src="lib/classList.js"></script>
+		
+		<script src="js/reveal.js"></script>
+		
+		<script>
+			// Parse the query string into a key/value object
+			var query = {};
+			location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+				query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+			} );
+
+			// Fires when a slide with data-state=customevent is activated
+			Reveal.addEventListener( 'customevent', function() {
+				alert( '"customevent" has fired' );
+			} );
+
+			// Fires each time a new slide is activated
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				// event.indexh & event.indexv
+			} );
+
+			Reveal.initialize({
+				// Display controls in the bottom right corner
+				controls: true,
+
+				// Display a presentation progress bar
+				progress: true,
+
+				// If true; each slide will be pushed to the browser history
+				history: true,
+
+				// Loops the presentation, defaults to false
+				loop: false,
+
+				// Flags if mouse wheel navigation should be enabled
+				mouseWheel: true,
+
+				// Apply a 3D roll to links on hover
+				rollingLinks: true,
+
+				// UI style
+				theme: query.theme || 'default', // default/neon
+
+				// Transition style
+				transition: query.transition || 'default' // default/cube/page/concave/linear(2d)
+			});
+
+			hljs.initHighlightingOnLoad();
+		</script>
+
+	</body>
+</html>
