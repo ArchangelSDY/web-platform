@@ -657,7 +657,7 @@
 
         // Verify that the transform was set as expected
         test(function() {assert_equals(
-            document.getElementById("myDiv").style.getPropertyCSSValue("transform").cssText, //Actual
+            document.getElementById("myDiv").style.getPropertyValue("transform"), //Actual
             "translate(100px, 100px)",  //Expected
             "transform should be translate(100px,100px)")}, //Description
             "Transform_Translate_100px_100px"); //name
@@ -693,8 +693,8 @@
                         <li class="fragment">查找规范关于一致性需求的陈述（MUST, MUST NOT, SHOULD, SHOULD NOT, MAY）</li>
                         <li class="fragment" style="list-style-type: none;">
                             <ul>
-                                <li><i>On getting, it <span class="highlight">must</span> return its current value. On setting, if the new value is one of 'none', 'copy', 'link', or 'move', then the attribute's current value <span class="highlight">must</span> be set to the new value. Other values <span class="highlight">must</span> be ignored.</i></li>
-                                <li><i>If both 'left' and 'right’ are 'auto', the flex item <span class="highlight">must</span> be positioned so that its main-start or cross-start edge (whichever is in the horizontal axis) is aligned with the static position.</i></li>
+                                <li style="font-size: 22px;"><i>On getting, it <span class="highlight">must</span> return its current value. On setting, if the new value is one of 'none', 'copy', 'link', or 'move', then the attribute's current value <span class="highlight">must</span> be set to the new value. Other values <span class="highlight">must</span> be ignored.</i></li>
+                                <li style="font-size: 22px;"><i>If both 'left' and 'right’ are 'auto', the flex item <span class="highlight">must</span> be positioned so that its main-start or cross-start edge (whichever is in the horizontal axis) is aligned with the static position.</i></li>
                             </ul>
                         </li>
                         <li class="fragment">单一的需求陈述通常需要多个测试来涵盖，一个测试也可以涵盖多个需求陈述</li>
